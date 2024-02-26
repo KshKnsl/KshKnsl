@@ -1,16 +1,26 @@
-- 👋 Hi, I’m @KushKansal
-- 👀 I’m interested in learning.
-- 🌱 I’m currently learning Java and Web Development.
-- 📫 How to reach me = via a mail at kushkansal0@gmail.com 
+<h1 align="center">Hi, I'm Kush Kumar Kansal👋</h1>
+<h3 align="center">FrontEnd developer, Passionate Coder</h3>
+<ul>
+<li>My DNA became DSA.</li>
+<li>Sponsered by hard work</li>
+<li>Fueled by Knowledge</li>
+<li>Crafted by Brain</li>
+<li>Driven by ticking of clock</li>
+<li>Engineered by determination</li>
+<li>Powered By curiosity</li>
+</ul>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=KushKansal&label=Profile%20views&color=0c75b6&style=flat" alt="Kush Kansal" /> </p>
+- 📫 How to reach me **kushkansal0@gmail.com**
 
-### Skills
-
-
-<p align="left"><a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" width="36" height="36" alt="Java" /></a><a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" width="36" height="36" alt="Git" /></a><a href="https://nextjs.org/docs" target="_blank" rel="noreferrer">
-<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" /></a><a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="36" height="36" alt="TailwindCSS" /></a><a href="https://redux.js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a>
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/kushknasal" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" height="30" width="40" /></a>
+<a href="https://instagram.com/kushkansal0" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" height="30" width="40" /></a>
+<a href="https://www.leetcode.com/kushkansal" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" height="30" width="40" /></a>
 </p>
 
-### Socials
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=KushKansal&show_icons=true&locale=en&layout=compact"/></p>
 
-<p align="left"> <a href="https://www.github.com/KushKansal" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> 
-  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a> <a href="https://www.linkedin.com/in/kushkansal/" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" /></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=KushKansal&show_icons=true&locale=en"/></p>
+
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=KushKansal&"/></p>
