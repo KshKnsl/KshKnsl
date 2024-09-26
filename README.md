@@ -1,6 +1,7 @@
 <h1 align="center">Hi, I'm Kush Kumar Kansal👋</h1>
 <h3 align="center">FrontEnd developer, Passionate Coder</h3>
 <ul>
+  <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width = "100%">
 <li>My DNA became DSA.</li>
 <li>Sponsered by hard work</li>
 <li>Fueled by Knowledge</li>
@@ -22,3 +23,4 @@
 
 ### ✍️ Dev Quote
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+<img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif">
