@@ -74,7 +74,11 @@
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40" style="margin: 0 10px;"/>
 </p>
 
-<h2 align="center">GitHub Stats</h2>
+<h2 align="center">
+  GitHub Stats
+
+[![](https://visitcount.itsvg.in/api?id=kshknsl&label=Profile%20Views&pretty=false)](https://visitcount.itsvg.in)
+</h2>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs?username=kshknsl&show_icons=true&locale=en&layout=compact&theme=radical" alt="Top Languages" style="margin-bottom: 20px;">
