@@ -77,7 +77,7 @@
 <h2 align="center">
   GitHub Stats
 
-[![](https://visitcount.itsvg.in/api?id=kshknsl&label=Profile%20Views&pretty=false)](https://visitcount.itsvg.in)
+![](https://komarev.com/ghpvc/?username=your-github-username)
 </h2>
 
 <p align="center">
