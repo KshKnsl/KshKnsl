@@ -47,7 +47,7 @@ interface PlatformData {
 
 interface FullDataState {
   platform: string;
-  data: ContestData[];
+  data: ContestData[] | PlatformData;
 }
 
 interface LoadingState {
@@ -251,7 +251,7 @@ export default function CodingProfiles() {
   }
 
   // Update the renderPlatformData function to include CountUp animations and proper links
-  const renderPlatformData = (platformId: string, data: any, platformUrl: string) => {
+  const renderPlatformData = (platformId: string, data: PlatformData | ContestData[] | null, platformUrl: string) => {
     if (!data) {
       return (
         <div className="flex justify-center items-center h-20 text-gray-500 dark:text-gray-400 text-xs">
@@ -272,7 +272,7 @@ export default function CodingProfiles() {
 
     switch (platformId) {
       case "cf":
-        const lastContest = getLastContest(data)
+        const lastContest = getLastContest(data as ContestData[] | null)
         return lastContest ? (
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
@@ -310,7 +310,11 @@ export default function CodingProfiles() {
             </div>
             <div className="flex justify-between mt-1.5">
               <button
-                onClick={() => setShowFullData({ platform: "Codeforces", data })}
+                onClick={() => {
+                  if (Array.isArray(data)) {
+                    setShowFullData({ platform: "Codeforces", data });
+                  }
+                }}
                 className="text-[10px] text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 flex items-center justify-center gap-1"
               >
                 <ExternalLink className="w-2.5 h-2.5" />
@@ -330,6 +334,7 @@ export default function CodingProfiles() {
         ) : null
 
       case "cc":
+        const ccData = data as PlatformData;
         return (
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
@@ -341,13 +346,13 @@ export default function CodingProfiles() {
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Rating</span>
               <span className="font-bold text-xs text-yellow-600">
-                <CountUp end={data.rating} />
+                <CountUp end={ccData.rating || 0} />
               </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Stars</span>
               <div className="flex">
-                {[...Array(Number.parseInt(data.stars) || 0)].map((_, i) => (
+                {[...Array(Number.parseInt(ccData.stars?.toString() || "0"))].map((_, i) => (
                   <span key={i} className="text-yellow-500 text-xs">
                     ★
                   </span>
@@ -357,20 +362,24 @@ export default function CodingProfiles() {
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Global Rank</span>
               <span className="text-xs text-gray-800 dark:text-gray-200">
-                <CountUp end={data.global_rank} />
+                <CountUp end={ccData.global_rank || 0} />
               </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Country Rank</span>
               <span className="text-xs text-gray-800 dark:text-gray-200">
-                <CountUp end={data.country_rank} />
+                <CountUp end={ccData.country_rank || 0} />
               </span>
             </div>
             <div className="flex justify-between mt-1.5">
               <button
-                onClick={() => setShowFullData({ platform: "CodeChef", data })}
+                onClick={() => {
+                  if (Array.isArray(data)) {
+                    setShowFullData({ platform: "CodeChef", data });
+                  }
+                }}
                 className="text-[10px] text-yellow-600 hover:text-yellow-700 dark:text-yellow-500 dark:hover:text-yellow-400 flex items-center justify-center gap-1"
-              >
+              >         
                 <ExternalLink className="w-2.5 h-2.5" />
                 View Full Data
               </button>
@@ -388,34 +397,35 @@ export default function CodingProfiles() {
         )
 
       case "lc":
+        const lcData = data as PlatformData;
         return (
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Problems</span>
               <span className="font-bold text-xs text-orange-500">
-                <CountUp end={data.totalSolved} /> / {data.totalQuestions}
+                <CountUp end={lcData.totalSolved || 0} /> / {lcData.totalQuestions || 0}
               </span>
             </div>
             <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
               <div className="flex h-full">
                 <div
                   className="bg-green-500 h-full"
-                  style={{ width: `${(data.easySolved / data.totalSolved) * 100}%` }}
+                  style={{ width: `${((lcData.easySolved || 0) / (lcData.totalSolved || 1)) * 100}%` }}
                 ></div>
                 <div
                   className="bg-yellow-500 h-full"
-                  style={{ width: `${(data.mediumSolved / data.totalSolved) * 100}%` }}
+                  style={{ width: `${((lcData.mediumSolved || 0) / (lcData.totalSolved || 1)) * 100}%` }}
                 ></div>
                 <div
                   className="bg-red-500 h-full"
-                  style={{ width: `${(data.hardSolved / data.totalSolved) * 100}%` }}
+                  style={{ width: `${((lcData.hardSolved || 0) / (lcData.totalSolved || 1)) * 100}%` }}
                 ></div>
               </div>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Ranking</span>
               <span className="text-xs text-gray-800 dark:text-gray-200">
-                <CountUp end={data.ranking} />
+                <CountUp end={lcData.ranking || 0} />
               </span>
             </div>
             <div className="flex justify-between items-center">
@@ -426,7 +436,11 @@ export default function CodingProfiles() {
             </div>
             <div className="flex justify-between mt-1.5">
               <button
-                onClick={() => setShowFullData({ platform: "LeetCode", data })}
+                onClick={() => {
+                  if (Array.isArray(data)) {
+                    setShowFullData({ platform: "LeetCode", data });
+                  }
+                }}
                 className="text-[10px] text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 flex items-center justify-center gap-1"
               >
                 <ExternalLink className="w-2.5 h-2.5" />
@@ -446,6 +460,7 @@ export default function CodingProfiles() {
         )
 
       case "gfg":
+        const gfgData = data as PlatformData;
         return (
           <div className="space-y-1.5">
             {/* Campus Ambassador Badge */}
@@ -456,18 +471,22 @@ export default function CodingProfiles() {
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Inst. Rank</span>
               <span className="font-bold text-xs text-green-600">
-                <CountUp end={data.institution_rank || 300} />
+                <CountUp end={gfgData.institution_rank || 300} />
               </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-600 dark:text-gray-400">Problems</span>
               <span className="text-xs text-gray-800 dark:text-gray-200">
-                <CountUp end={data.totalProblemsSolved || 450} />
+                <CountUp end={gfgData.totalProblemsSolved || 450} />
               </span>
             </div>
             <div className="flex justify-between mt-1.5">
               <button
-                onClick={() => setShowFullData({ platform: "GeeksForGeeks", data })}
+                onClick={() => {
+                  if (Array.isArray(data)) {
+                    setShowFullData({ platform: "GeeksForGeeks", data });
+                  }
+                }}
                 className="text-[10px] text-green-600 hover:text-green-700 dark:text-green-500 dark:hover:text-green-400 flex items-center justify-center gap-1"
               >
                 <ExternalLink className="w-2.5 h-2.5" />

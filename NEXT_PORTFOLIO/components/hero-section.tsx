@@ -124,7 +124,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5 }}
               className="text-3xl sm:text-4xl md:text-6xl font-bold dark:text-white text-[#323232]"
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-[#0d47a1] via-[#2563eb] to-[#60a5fa] text-transparent bg-clip-text">
                 Kush Kansal
               </span>

@@ -13,7 +13,6 @@ import {
   Cpu,
   BookOpen,
   Lightbulb,
-  ChevronLeft,
 } from "lucide-react";
 import BrowserNavbar from "@/components/browser-navbar";
 import TerminalEmulator from "@/components/terminal-emulator";
@@ -323,7 +322,7 @@ export default function Home() {
               Interactive Terminal
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Type 'help' to see available commands
+              Type &apos;help&apos; to see available commands
             </p>
           </motion.div>
           <TerminalEmulator />
@@ -613,7 +612,7 @@ export default function Home() {
               Get In Touch
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas or
+              I&apos;m always open to discussing new projects, creative ideas or
               opportunities
             </p>
           </motion.div>

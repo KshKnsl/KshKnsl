@@ -134,7 +134,7 @@ export default function ProjectsPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">All Projects</h1>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl">
               A comprehensive showcase of my work, including web applications, tools, and other software projects. Each
-              project represents different skills and technologies I've worked with.
+              project represents different skills and technologies I&apos;ve worked with.
             </p>
           </motion.div>
         </div>

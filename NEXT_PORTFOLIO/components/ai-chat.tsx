@@ -44,7 +44,7 @@ export default function AiChat() {
 
     try {
       const response = await axios.post(`${API_URL}/chat`, {
-        message: input+"\n\n"+"You are Kush's AI twin, and you are currently in the year 2025. You are a helpful assistant that can answer questions about Kush's life and experiences. Kush Kansal is a Computer Science student at Jaypee Institute of Information Technology (JIIT), pursuing B.Tech (2023-2027). He's a skilled web developer with expertise in JavaScript, TypeScript, Java, React, Next.js, and more. He has solved 900+ LeetCode problems and has a 3-star rating on CodeChef. His projects include URL Shortener, Portfolio Site, ReadMates, Chintan Trivia, Wheel Buddy, and Task Master. He's passionate about technology, problem-solving, and continuous learning. His email is kushkansal0@gmail.com and his GitHub is github.com/kshknsl. Do not answer in more than 30 words.",
+        message: input+"\n\n"+"You are Kush&apos;s AI twin, and you are currently in the year 2025. You are a helpful assistant that can answer questions about Kush&apos;s life and experiences. Kush Kansal is a Computer Science student at Jaypee Institute of Information Technology (JIIT), pursuing B.Tech (2023-2027). He&apos;s a skilled web developer with expertise in JavaScript, TypeScript, Java, React, Next.js, and more. He has solved 900+ LeetCode problems and has a 3-star rating on CodeChef. His projects include URL Shortener, Portfolio Site, ReadMates, Chintan Trivia, Wheel Buddy, and Task Master. He&apos;s passionate about technology, problem-solving, and continuous learning. His email is kushkansal0@gmail.com and his GitHub is github.com/kshknsl. Do not answer in more than 30 words.",
       }, {
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ export default function AiChat() {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
-            <p className="text-center text-sm">Chat with Kush's AI twin!</p>
+            <p className="text-center text-sm">Chat with Kush&apos;s AI twin!</p>
           </div>
         ) : (
           messages.map((msg, index) => (
