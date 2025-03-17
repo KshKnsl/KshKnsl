@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // ✅ Required for GitHub Pages deployment
+  output: "export", // Required for static export
+  basePath: "/KshKnsl", // ✅ Change this to match your repository name
   images: {
-    unoptimized: true, // ✅ Fixes issues with images in static exports
+    unoptimized: true, // Fixes image issues in static export
     remotePatterns: [
       {
         protocol: "https",
