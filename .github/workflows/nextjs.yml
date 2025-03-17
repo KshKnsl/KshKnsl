@@ -21,8 +21,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Change directory to NEXT_PORTFOLIO
-        run: cd NEXT_PORTFOLIO
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -34,7 +32,6 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
-          fi
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -49,7 +46,7 @@ jobs:
         with:
           path: |
             NEXT_PORTFOLIO/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('NEXT_PORTFOLIO/package-lock.json') }}-${{ hashFiles('NEXT_PORTFOLIO/*.[jt]s', 'NEXT_PORTFOLIO/*.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('NEXT_PORTFOLIO/package-lock.json') }}-${{ hashFiles('NEXT_PORTFOLIO/*.js', 'NEXT_PORTFOLIO/*.jsx', 'NEXT_PORTFOLIO/*.ts', 'NEXT_PORTFOLIO/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('NEXT_PORTFOLIO/package-lock.json') }}-
       - name: Install dependencies
