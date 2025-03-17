@@ -44,7 +44,7 @@ const GithubStats: React.FC<GithubStatsProps> = ({ username, repo }) => {
           const contributorsResponse = await fetch(`https://api.github.com/repos/${username}/${repo}/contributors`)
           const contributorsData = await contributorsResponse.json()
           const totalContributions = contributorsData.reduce(
-            (acc: number, contributor: any) => acc + contributor.contributions,
+            (acc: number, contributor: { contributions: number }) => acc + contributor.contributions,
             0,
           )
 
@@ -114,7 +114,7 @@ const GithubStats: React.FC<GithubStatsProps> = ({ username, repo }) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-gray-900 shadow rounded-lg overflow-hidden"
+      className="bg-white dark:bg-black shadow rounded-lg overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

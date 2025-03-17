@@ -20,9 +20,34 @@ interface Platform {
   url?: string;
 }
 
+interface ContestData {
+  rating: number;
+  contestName: string;
+  rank: number;
+  oldRating: number;
+  newRating: number;
+  timestamp: number;
+  handle?: string;
+}
+
+interface PlatformData {
+  rating?: number;
+  stars?: number;
+  global_rank?: number;
+  country_rank?: number;
+  totalSolved?: number;
+  totalQuestions?: number;
+  easySolved?: number;
+  mediumSolved?: number;
+  hardSolved?: number;
+  ranking?: number;
+  institution_rank?: number;
+  totalProblemsSolved?: number;
+}
+
 interface FullDataState {
   platform: string;
-  data: any;
+  data: ContestData[];
 }
 
 interface LoadingState {
@@ -34,10 +59,10 @@ interface LoadingState {
 }
 
 export default function CodingProfiles() {
-  const [cfData, setCFContestDetails] = useState<any>(null)
-  const [ccData, setCCContestDetails] = useState<any>(null)
-  const [lcData, setLCContestDetails] = useState<any>(null)
-  const [gfgData, setGFGContestDetails] = useState<any>(null)
+  const [cfData, setCFContestDetails] = useState<ContestData[] | null>(null)
+  const [ccData, setCCContestDetails] = useState<ContestData[] | null>(null)
+  const [lcData, setLCContestDetails] = useState<ContestData[] | null>(null)
+  const [gfgData, setGFGContestDetails] = useState<ContestData[] | null>(null)
   const [loading, setLoading] = useState<LoadingState>({
     cf: true,
     cc: true,
@@ -82,7 +107,7 @@ export default function CodingProfiles() {
 
   const handleCFsubmit = () => {
     setLoading((prev) => ({ ...prev, cf: true }))
-    var apiUrl = `https://codeforces.com/api/user.rating?handle=mrkushkansal`
+    const apiUrl = `https://codeforces.com/api/user.rating?handle=mrkushkansal`
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -97,7 +122,7 @@ export default function CodingProfiles() {
 
   const handleCCsubmit = () => {
     setLoading((prev) => ({ ...prev, cc: true }))
-    var apiUrl = `https://codechef-api-1.onrender.com/codechef/knsl`
+    const apiUrl = `https://codechef-api-1.onrender.com/codechef/knsl`
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -112,7 +137,7 @@ export default function CodingProfiles() {
 
   const handleLCsubmit = () => {
     setLoading((prev) => ({ ...prev, lc: true }))
-    var apiUrl = `https://leetcode-stats-api.herokuapp.com/kshkansal`
+    const apiUrl = `https://leetcode-stats-api.herokuapp.com/kshkansal`
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -127,7 +152,7 @@ export default function CodingProfiles() {
 
   const handleGFGsubmit = () => {
     setLoading((prev) => ({ ...prev, gfg: true }))
-    var apiUrl = `https://geeks-for-geeks-stats-api.vercel.app/?raw=Y&userName=kushkansal`
+    const apiUrl = `https://geeks-for-geeks-stats-api.vercel.app/?raw=Y&userName=kushkansal`
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -183,23 +208,13 @@ export default function CodingProfiles() {
     },
   ]
 
-  const getLastContest = (data: any) => {
+  const getLastContest = (data: ContestData[] | null) => {
     if (!data || !Array.isArray(data) || data.length === 0) return null
     return data[data.length - 1]
   }
 
-  const formatDate = (timestamp: number) => {
-    if (!timestamp) return "N/A"
-    const date = new Date(timestamp * 1000)
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
-
   // Update the renderProfileCard function to make it more mobile responsive
-  const renderProfileCard = (platform: Platform, data: any, isLoading: boolean) => {
+  const renderProfileCard = (platform: Platform, data: PlatformData | ContestData[] | null, isLoading: boolean) => {
     const safeUrl = platform.url || '#'
     return (
       <motion.div
@@ -518,7 +533,7 @@ export default function CodingProfiles() {
                 </button>
               </div>
               <div className="p-4 overflow-auto max-h-[calc(80vh-8rem)]">
-                <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-auto text-xs md:text-sm font-mono text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-inner">
+                <pre className="bg-gray-50 dark:bg-[#0F0F10] p-4 rounded-lg overflow-auto text-xs md:text-sm font-mono text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-inner">
                   <code>{JSON.stringify(showFullData.data, null, 2)}</code>
                 </pre>
               </div>

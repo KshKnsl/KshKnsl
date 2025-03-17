@@ -75,7 +75,7 @@ export default function ContactForm() {
           <CheckCircle className="w-16 h-16 mx-auto text-green-500 mb-4" />
           <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Message Sent!</h3>
           <p className="text-gray-600 dark:text-gray-300">
-            Thank you for reaching out. I'll get back to you as soon as possible.
+            Thank you for reaching out. I&apos;ll get back to you as soon as possible.
           </p>
         </motion.div>
       ) : (
@@ -90,7 +90,7 @@ export default function ContactForm() {
             Send Me a Message
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-            Fill out the form below and I'll get back to you as soon as possible.
+            Fill out the form below and I&apos;ll get back to you as soon as possible.
           </p>
           
           <div className="space-y-5">
@@ -142,7 +142,7 @@ export default function ContactForm() {
               </label>
               <div className="relative">
                 <div className="flex">
-                  <span className="inline-flex items-center px-3 py-3 text-sm text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 border border-r-0 border-gray-200 dark:border-gray-700 rounded-l-lg">
+                  <span className="inline-flex items-center px-3 py-3 text-sm text-gray-900 dark:text-white bg-gray-100 dark:bg-[#0F0F10] border border-r-0 border-gray-200 dark:border-gray-700 rounded-l-lg">
                     <Phone className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                   </span>
                   <input
@@ -222,10 +222,6 @@ export default function ContactForm() {
                   </>
                 )}
               </motion.button>
-            </div>
-            
-            <div className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
-              <p>Fields marked with <span className="text-red-500">*</span> are required</p>
             </div>
           </div>
         </motion.form>

@@ -16,7 +16,6 @@ const roleTitles = [
 ]
 
 export default function HeroSection() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
   const [cursorVisible, setCursorVisible] = useState(false)
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
@@ -41,13 +40,7 @@ export default function HeroSection() {
 
     const handleMouseMove = (e: Event) => {
       const mouseEvent = e as MouseEvent
-      const element = heroSection as HTMLElement
       
-      setMousePosition({
-        x: mouseEvent.clientX / element.clientWidth - 0.5,
-        y: mouseEvent.clientY / element.clientHeight - 0.5,
-      })
-
       setCursorPosition({
         x: mouseEvent.clientX,
         y: mouseEvent.clientY,
@@ -154,7 +147,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-base sm:text-lg md:text-xl dark:text-gray-400"
             >
-              CSE @JIIT' 27 || Java || JavaScript || Web Developer || 900+ LeetCode || 3 ⭐ CodeChef
+              CSE @JIIT&apos; 27 || Java || JavaScript || Web Developer || 900+ LeetCode || 3 ⭐ CodeChef
             </motion.p>
 
             <motion.div

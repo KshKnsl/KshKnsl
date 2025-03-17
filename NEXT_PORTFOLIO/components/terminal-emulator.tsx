@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion} from "framer-motion"
 import { useTheme } from "@/context/theme-provider"
 import TerminalInput from "./terminal-input"
@@ -367,29 +367,34 @@ Type <span class="text-yellow-600 dark:text-yellow-400">cd projects</span> to na
 
 export default function TerminalEmulator() {
   const [history, setHistory] = useState<string[]>([])
-  const [input, setInput] = useState("")
-  const [commandHistory, setCommandHistory] = useState<string[]>([])
-  const [historyIndex, setHistoryIndex] = useState(-1)
-  const [windowWidth, setWindowWidth] = useState(0)
-  const { theme } = useTheme()
+  const [currentCommand, setCurrentCommand] = useState("")
   const terminalRef = useRef<HTMLDivElement>(null)
-  const isDark = theme === "dark"
+  const { theme } = useTheme()
 
-  // Get welcome message with appropriate banner based on screen size
-  const getWelcomeMessage = () => {
-    let banner = BANNERS.large;
-    if (windowWidth < 640) {
-      banner = BANNERS.tiny;
-    } else if (windowWidth < 768) {
-      banner = BANNERS.small;
-    } else if (windowWidth < 1024) {
-      banner = BANNERS.medium;
+  const getWelcomeMessage = useCallback(() => {
+    const hour = new Date().getHours()
+    let greeting = "Good morning"
+    if (hour >= 12 && hour < 17) greeting = "Good afternoon"
+    if (hour >= 17) greeting = "Good evening"
+
+    return `<span class="text-green-600 dark:text-green-400">${greeting}! Welcome to my portfolio terminal.</span>
+Type <span class="text-yellow-600 dark:text-yellow-400">help</span> to see available commands.`
+  }, [])
+
+  useEffect(() => {
+    setHistory([getWelcomeMessage()])
+  }, [getWelcomeMessage])
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (terminalRef.current) {
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+      }
     }
-    
-    return `${banner}
-<span class="text-gray-600 dark:text-gray-400">Welcome to my interactive terminal portfolio.</span>
-<span class="text-gray-600 dark:text-gray-400">Type <span class="text-yellow-600 dark:text-yellow-400">help</span> to see available commands.</span>`;
-  }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   // Process command and return output
   const processCommand = (cmd: string) => {
@@ -421,54 +426,10 @@ export default function TerminalEmulator() {
     }
   }
 
-  // Initialize terminal with welcome message
-  useEffect(() => {
-    const welcomeMessage = getWelcomeMessage()
-    setHistory([welcomeMessage])
-    
-    // Set window width for responsive banner
-    setWindowWidth(window.innerWidth)
-    
-    // Add window resize listener
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    
-    window.addEventListener("resize", handleResize)
-    
-    // Mobile keyboard visibility fix
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        setTimeout(() => {
-          window.scrollTo(0, 0)
-        }, 50)
-      }
-    }
-    
-    document.addEventListener("visibilitychange", handleVisibilityChange)
-    
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      document.removeEventListener("visibilitychange", handleVisibilityChange)
-    }
-  }, [])
-
-  // Auto-scroll to bottom when history changes
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
-    }
-  }, [history])
-
   // Handle command execution
   const handleCommand = (cmd: string) => {
     const trimmedCmd = cmd.trim()
     if (!trimmedCmd) return
-    
-    // Add command to history
-    const newCommandHistory = [...commandHistory, trimmedCmd]
-    setCommandHistory(newCommandHistory)
-    setHistoryIndex(-1)
     
     // Process command
     const output = processCommand(trimmedCmd)
@@ -479,7 +440,7 @@ export default function TerminalEmulator() {
     <div className="w-full max-w-4xl mx-auto">
       <div className="rounded-lg overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900">
+        <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-black">
           <div className="flex space-x-2">
             <button
               className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600"
@@ -525,10 +486,10 @@ export default function TerminalEmulator() {
           
           {/* Terminal Input */}
           <TerminalInput
-            input={input}
-            setInput={setInput}
+            input={currentCommand}
+            setInput={setCurrentCommand}
             handleCommand={handleCommand}
-            isDark={isDark}
+            isDark={theme === "dark"}
           />
         </div>
       </div>

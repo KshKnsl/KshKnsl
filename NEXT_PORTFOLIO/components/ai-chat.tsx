@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from "framer-motion";
 import { Send, Bot } from "lucide-react";
+import Image from "next/image";
 
 const API_URL = "https://ntyx.onrender.com/";
 
@@ -108,7 +109,7 @@ export default function AiChat() {
                     ? 'bg-[#3b82f6] dark:bg-[#60a5fa] text-white rounded-tr-none shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]' 
                     : msg.isError 
                       ? 'bg-red-500 text-white rounded-tl-none shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]' 
-                      : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-tl-none shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]'
+                      : 'bg-gray-200 dark:bg-[#0F0F10] text-gray-900 dark:text-white rounded-tl-none shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]'
                 }`}
               >
                 <div className="font-bold text-sm mb-1">{msg.sender}</div>
@@ -119,20 +120,28 @@ export default function AiChat() {
                     <ReactMarkdown 
                       remarkPlugins={[remarkGfm]}
                       components={{
-                        p: ({node, ...props}) => <p className="mb-2 text-sm" {...props} />,
-                        h1: ({node, ...props}) => <h1 className="text-lg font-bold my-2" {...props} />,
-                        h2: ({node, ...props}) => <h2 className="text-base font-bold my-2" {...props} />,
-                        h3: ({node, ...props}) => <h3 className="text-sm font-bold my-1" {...props} />,
-                        ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 text-sm" {...props} />,
-                        ol: ({node, ...props}) => <ol className="list-decimal pl-5 my-2 text-sm" {...props} />,
-                        li: ({node, ...props}) => <li className="my-1 text-sm" {...props} />,
-                        a: ({node, ...props}) => <a className="text-blue-400 hover:underline text-sm" target="_blank" rel="noopener noreferrer" {...props} />,
-                        code: ({node, ...props}: any) => 
-                          props.inline 
-                            ? <code className="bg-gray-300 dark:bg-gray-700 px-1 rounded text-xs" {...props} />
-                            : <pre className="bg-gray-300 dark:bg-gray-700 p-2 rounded overflow-x-auto my-2 text-xs"><code {...props} /></pre>,
-                        blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-500 pl-4 italic my-2 text-sm" {...props} />,
-                        img: ({node, ...props}) => <img className="max-w-full h-auto my-2 rounded" {...props} alt={props.alt || 'Image'} />
+                        p: (props) => <p className="mb-2 text-sm" {...props} />,
+                        h1: (props) => <h1 className="text-lg font-bold my-2" {...props} />,
+                        h2: (props) => <h2 className="text-base font-bold my-2" {...props} />,
+                        h3: (props) => <h3 className="text-sm font-bold my-1" {...props} />,
+                        ul: (props) => <ul className="list-disc pl-5 my-2 text-sm" {...props} />,
+                        ol: (props) => <ol className="list-decimal pl-5 my-2 text-sm" {...props} />,
+                        li: (props) => <li className="my-1 text-sm" {...props} />,
+                        a: (props) => <a className="text-blue-400 hover:underline text-sm" target="_blank" rel="noopener noreferrer" {...props} />,
+                        code: (props) => {
+                          const { inline, ...rest } = props as { inline?: boolean };
+                          return inline 
+                            ? <code className="bg-gray-300 dark:bg-[#0A0A0A] px-1 rounded text-xs" {...rest} />
+                            : <pre className="bg-gray-300 dark:bg-[#0A0A0A] p-2 rounded overflow-x-auto my-2 text-xs"><code {...rest} /></pre>;
+                        },
+                        blockquote: (props) => <blockquote className="border-l-4 border-gray-500 pl-4 italic my-2 text-sm" {...props} />,
+                        img: (props) => <Image
+                          src={props.src || "/path/to/your/image.png"}
+                          alt={props.alt || "AI Assistant"}
+                          width={40}
+                          height={40}
+                          className="max-w-full h-auto my-2 rounded-full"
+                        />
                       }}
                     >
                       {msg.text}
@@ -145,7 +154,7 @@ export default function AiChat() {
         )}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg p-3 rounded-tl-none max-w-[80%] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]">
+            <div className="bg-gray-200 dark:bg-[#0F0F10] text-gray-900 dark:text-white rounded-lg p-3 rounded-tl-none max-w-[80%] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]">
               <div className="font-bold text-sm mb-1">AI Twin</div>
               <div className="flex space-x-2">
                 <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '0ms' }}></div>

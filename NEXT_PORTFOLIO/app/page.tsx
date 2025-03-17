@@ -13,7 +13,7 @@ import {
   Cpu,
   BookOpen,
   Lightbulb,
-  ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import BrowserNavbar from "@/components/browser-navbar";
 import TerminalEmulator from "@/components/terminal-emulator";
@@ -61,13 +61,13 @@ const staggerContainer = {
 const personalInfo = {
   name: "Kush Kansal",
   title:
-    "CSE @JIIT' 27 || Java || JavaScript || Web Developer || 700+ LeetCode || 3 ⭐ CodeChef",
+    "CSE @JIIT&apos; 27 || Java || JavaScript || Web Developer || 700+ LeetCode || 3 ⭐ CodeChef",
   email: "kushkansal0@gmail.com",
   github: "https://github.com/kushkansal/",
   linkedin: "https://www.linkedin.com/in/kushkansal/",
   instagram: "https://www.instagram.com/kushkansal0/",
   twitter: "https://twitter.com/kansalkkush",
-  about: `Hi everyone. My name is Kush Kansal and I am a second-year college student pursuing my B.tech from JIIT. I have a keen interest in technological stuff. I get excited just by thinking about the endless possibilities of cutting-edge technologies. Driven by a strong sense of curiosity. Currently, my skills are in HTML, CSS, Object Oriented programming, C, C++, and Java. I am currently learning full-stack web development and DSA. My unwavering determination propels me towards achieving excellence, and I aspire to contribute significantly to society by enhancing people's lives.`,
+  about: `Hi everyone. My name is Kush Kansal and I am a second-year college student pursuing my B.tech from JIIT. I have a keen interest in technological stuff. I get excited just by thinking about the endless possibilities of cutting-edge technologies. Driven by a strong sense of curiosity. Currently, my skills are in HTML, CSS, Object Oriented programming, C, C++, and Java. I am currently learning full-stack web development and DSA. My unwavering determination propels me towards achieving excellence, and I aspire to contribute significantly to society by enhancing people&apos;s lives.`,
   projects: [
     {
       title: "URL Shortener",

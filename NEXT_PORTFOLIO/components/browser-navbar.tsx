@@ -15,16 +15,15 @@ import {
   Mail,
   Terminal,
   Download,
-  MoreHorizontal,
 } from "lucide-react"
-import { getRandomMessage, greeting } from "@/utils/messages"
+import { getRandomMessage } from "@/utils/messages"
 import { scrollToElement } from "@/utils/scroll-utils"
 import ThemeToggle from "./theme-toggle"
 
 export default function BrowserNavbar({ activeSection }: { activeSection: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [currentUrl, setCurrentUrl] = useState("kushkansal.me")
+  const [currentUrl] = useState("kushkansal.me")
   const [activeTab, setActiveTab] = useState("home")
   const [tooltipMessage, setTooltipMessage] = useState("")
   const [showTooltip, setShowTooltip] = useState(false)
@@ -70,25 +69,6 @@ export default function BrowserNavbar({ activeSection }: { activeSection: string
     { id: "contact", label: "Contact", icon: <Mail className="w-4 h-4" />, href: "#contact" },
   ]
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string = "#") => {
-    e.preventDefault()
-
-    if (href === "#") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
-      return
-    }
-
-    const targetId = href.replace("#", "")
-    scrollToElement(targetId);
-    
-    if (isMenuOpen) {
-      setIsMenuOpen(false)
-    }
-  }
-
   return (
     <header
       ref={navbarRef}
@@ -133,7 +113,7 @@ export default function BrowserNavbar({ activeSection }: { activeSection: string
 
             <div className="hidden md:flex flex-1 max-w-xl">
               <div
-                className="flex items-center w-full h-9 px-3 rounded-full bg-gray-100/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-colors"
+                className="flex items-center w-full h-9 px-3 rounded-full bg-gray-100/80 dark:bg-[#0F0F10]/80 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-colors"
                 style={{ boxShadow: "inset 1px 1px 2px rgba(0,0,0,0.05)" }}
               >
                 <Search className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 mr-2" />
@@ -163,7 +143,7 @@ export default function BrowserNavbar({ activeSection }: { activeSection: string
                   }}
                   className={`flex items-center px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                     activeTab === tab.id
-                      ? "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700"
+                      ? "bg-gray-100 dark:bg-[#0F0F10] text-gray-900 dark:text-white border-gray-200 dark:border-gray-700"
                       : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 border-transparent"
                   }`}
                   style={{ boxShadow: activeTab === tab.id ? "1px 1px 0px rgba(0,0,0,0.1)" : "none" }}
@@ -237,7 +217,7 @@ export default function BrowserNavbar({ activeSection }: { activeSection: string
                         }}
                         style={{ boxShadow: "1px 1px 0px rgba(0,0,0,0.1)" }}
                       >
-                        <span className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg mr-3 border border-gray-200 dark:border-gray-700">
+                        <span className="bg-gray-100 dark:bg-[#0F0F10] p-2 rounded-lg mr-3 border border-gray-200 dark:border-gray-700">
                           {tab.icon}
                         </span>
                         {tab.label}

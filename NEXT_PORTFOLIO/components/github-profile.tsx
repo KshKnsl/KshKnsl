@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Github, GitFork, Users, BookOpen, ExternalLink } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import CountUp from "./count-up"
 
 interface GitHubProfileProps {
@@ -22,10 +20,6 @@ interface GitHubProfileData {
   htmlUrl: string
   public_repos: number
   followers: number
-}
-
-interface ContributionData {
-  totalContributions: number
 }
 
 const GitHubProfile: React.FC<GitHubProfileProps> = ({ username }) => {
@@ -49,7 +43,7 @@ const GitHubProfile: React.FC<GitHubProfileProps> = ({ username }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
           },
           body: JSON.stringify({
             query: `
