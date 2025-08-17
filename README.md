@@ -7,27 +7,6 @@
 
 <div>
 
-## About Me
-
-<table>
-  <tr>
-    <td>• My DNA became DSA</td>
-    <td>• Sponsored by hard work</td>
-  </tr>
-  <tr>
-    <td>• Fueled by Knowledge</td>
-    <td>• Crafted by Brain</td>
-  </tr>
-  <tr>
-    <td>• Driven by ticking of clock</td>
-    <td>• Engineered by determination</td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">• Powered By curiosity</td>
-  </tr>
-</table>
-
-
 # 📊 GitHub Stats:
 
   <div>
